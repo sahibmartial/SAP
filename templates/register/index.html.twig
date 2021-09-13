@@ -1,0 +1,27 @@
+{% extends 'Access.html.twig' %}
+
+{% block title %} Inscription!{% endblock %}
+
+{% block content %}
+
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper text-center">
+   {% if notification %}
+	<div class="alert alert-success">
+		{{ notification }} 
+		
+	</div>
+	{% endif %}
+
+
+    <h6>{{ controller_name }}! ✅</h6>
+
+   {{form(form)}}
+   <hr>
+   Ou vous connecter <a href="{{path('app_login')}}">ICI</a>
+</div>
+{% endblock %}

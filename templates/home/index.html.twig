@@ -1,0 +1,59 @@
+{% extends 'Access.html.twig' %}
+
+{% block title %}ACCESS-SAP!{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block mini %}
+{% endblock %}
+
+{% block content %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="example-wrapper">
+    
+     <a href="{{path('facture_add')}}" target="_blank" rel="noopener noreferrer"><button class="btn-info">Créer nouvelle facture</button></a>  
+    <h4 class="text-center"> {{ controller_name }}! ✅</h4>
+    
+ 
+    {% if factures %}
+      <div >
+      <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Désignation</th>
+      <th scope="col">Description</th>
+      <th scope="col">Prix HTT</th>
+      <th scope="col">TVA</th>
+      <th scope="col">Prix TTC</th>
+       <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for facture in factures %}
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{facture.désignation}}</td>
+      <td>{{facture.description}}</td>
+      <td>{{facture.prixHT}} €</td>
+      <td>{{20}} %</td>
+      <td>{{facture.prixTTC}} €</td>  
+      <td>
+       <a href="{{path('facture_edit',{'id':facture.id})}}"> <i class="fa fa-edit" style="font-size:30px;color:blue"></i></a>
+
+              <a href="{{path('facture_supprimer',{'id':facture.id})}}"> <i class="fa fa-trash" style="font-size:30px;color:red"></i></a>
+      </td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+      </div>
+    {% endif %}
+</div>
+    
+{% endblock %}
